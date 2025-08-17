@@ -1,5 +1,6 @@
 package com.eraasoft.spring.controller;
 
+import com.eraasoft.spring.dto.PostDto;
 import com.eraasoft.spring.dto.UserDto;
 import com.eraasoft.spring.service.UserService;
 import jakarta.validation.Valid;
@@ -44,5 +45,10 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<UserDto>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    @GetMapping("/{id}/posts")
+    ResponseEntity<List<PostDto>> getPostsByUserId(@PathVariable Long id){
+        return ResponseEntity.ok(userService.getPostsByUserId(id));
     }
 }
