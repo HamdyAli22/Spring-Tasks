@@ -1,0 +1,71 @@
+/*create Hospital Table with 
+id
+name
+numberOfDoctors
+numberOfPatient*/
+CREATE TABLE HOSPITAL(
+    ID NUMBER PRIMARY KEY,
+    NAME VARCHAR2(255),
+    NUMBER_OF_DOCTORS NUMBER,
+    NUMBER_OF_PATIENTS NUMBER
+)
+/*create Doctor Table with 
+id
+userName
+salary*/
+--the relation between Hospital and Doctor one to many
+/
+CREATE TABLE DOCTOR (
+    ID NUMBER PRIMARY KEY,
+    USER_NAME VARCHAR2(100),
+    SALARY NUMBER,
+    HOSPITAL_ID NUMBER,
+    CONSTRAINT FK_DOCTOR_HOSPITAL FOREIGN KEY (HOSPITAL_ID)
+        REFERENCES HOSPITAL(ID)
+);
+/
+/*create DoctorData Table with 
+id
+fullAddress
+firstName
+lastName
+age*/
+--the relation between Doctor and DoctorData one to one
+CREATE TABLE DOCTOR_DATA
+(
+  ID            NUMBER PRIMARY KEY ,
+  AGE           NUMBER,
+  FIRST_NAME    VARCHAR2(255 CHAR),
+  FULL_ADDRESS  VARCHAR2(255 CHAR),
+  LAST_NAME     VARCHAR2(255 CHAR),
+  DOCTOR_ID     NUMBER UNIQUE,
+  CONSTRAINT FK_DOCTOR_DATA FOREIGN KEY (DOCTOR_ID) 
+  REFERENCES DOCTOR (ID) 
+);
+/*create Patient Table with 
+id
+name
+typeOfDisease*/
+--the relation between Doctor and Patient one to many
+/
+CREATE TABLE PATIENT
+(
+  ID               NUMBER PRIMARY KEY,
+  NAME             VARCHAR2(255 CHAR),
+  TYPE_OF_DISEASE  VARCHAR2(255 CHAR),
+  DOCTOR_ID        NUMBER,
+  CONSTRAINT FK_PATIENT_DOCTOR FOREIGN KEY (DOCTOR_ID) 
+  REFERENCES DOCTOR (ID)
+)
+/
+--the relation between Hospital and Patient many to many
+CREATE TABLE HOSPITAL_PATIENT
+(
+  PATIENT_ID   NUMBER  NOT NULL,
+  HOSPITAL_ID  NUMBER  NOT NULL,
+  PRIMARY KEY (HOSPITAL_ID, PATIENT_ID),
+  CONSTRAINT FK_HP_HOSPITAL  FOREIGN KEY (HOSPITAL_ID) 
+  REFERENCES HOSPITAL(ID),
+  CONSTRAINT FK_HP_PATIENT FOREIGN KEY (PATIENT_ID) 
+  REFERENCES PATIENT (ID)
+);

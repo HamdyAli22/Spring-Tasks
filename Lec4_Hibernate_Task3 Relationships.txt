@@ -1,0 +1,42 @@
+Identify and apply code  relationship type (OneToOne, OneToMany, etc.) 
+every line contain 2 table pls apply relationship
+
+Student - Passport                      One-to-One
+
+Employee - Department                   Many-to-One
+
+Customer - Order                        One-to-Many
+
+Book - Author                           Many-to-Many
+
+Teacher - Subject                       Many-to-Many
+
+User - Role                             Many-to-Many   
+
+Course - Student                        Many-to-Many 
+
+Library - Book                          One-to-Many
+
+Doctor - Patient                        One-to-Many
+
+Product - Category                      Many-to-One
+
+Project - Employee                      Many-to-Many
+
+Invoice - Payment                       One-to-One
+
+Flight - Ticket                         One-to-Many
+
+Movie - Actor                           Many-to-Many
+
+Parent - Child                          One-to-Many
+
+School - Classroom                      One-to-Many
+
+Driver - Car                            One-to-One
+ 
+Hotel - Room                            One-to-Many
+
+Account - Transaction                   One-to-Many
+
+Country - City                          One-to-Many
